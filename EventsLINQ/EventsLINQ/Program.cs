@@ -8,7 +8,7 @@ namespace EventsLINQ
         {
             var task1 = new Task1();
 
-            task1.Run(() => Console.WriteLine(task1.Res()));
+            task1.Run(() => Console.WriteLine(task1.Res(2, 4)));
         }
     }
 }

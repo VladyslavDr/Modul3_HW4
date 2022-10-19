@@ -9,7 +9,7 @@ namespace EventsLINQ
     public class Task1
     {
         private event Func<int, int, int> SumHendler;
-        public int Res()
+        public int Res(int x, int y)
         {
             SumHendler += Sum;
             SumHendler += Sum;
@@ -18,7 +18,7 @@ namespace EventsLINQ
 
             foreach (var item in SumHendler.GetInvocationList())
             {
-                res += (int)item.DynamicInvoke(2, 4);
+                res += (int)item.DynamicInvoke(x, y);
             }
 
             return res;
