@@ -9,22 +9,25 @@ namespace EventsLINQ
     public class Task1
     {
         private event Func<int, int, int> SumHendler;
-        public int Res(int x, int y)
+        public void Run()
         {
             SumHendler += Sum;
             SumHendler += Sum;
 
             var res = 0;
 
-            foreach (var item in SumHendler.GetInvocationList())
+            Try(() =>
             {
-                res += (int)item.DynamicInvoke(x, y);
-            }
+                foreach (var item in SumHendler.GetInvocationList())
+                {
+                    res += (int)item.DynamicInvoke(2, 4);
+                }
+            });
 
-            return res;
+            Console.WriteLine(res);
         }
 
-        public void Run(Action action)
+        private void Try(Action action)
         {
             try
             {
